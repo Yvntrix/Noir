@@ -17,7 +17,7 @@ const Noired = (props: any) => {
             noWrap
           >
             <Text size="sm">{props.path}</Text>
-            <Group spacing="xs" position="center" align="center">
+            <Group spacing="xs" position="center" align="center" noWrap>
               <Button
                 size="xs"
                 leftIcon={<Copy />}
