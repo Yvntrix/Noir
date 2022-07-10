@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Group,
+  Space,
   Stack,
   Text,
   TextInput,
@@ -12,20 +13,29 @@ import { Target } from "tabler-icons-react";
 import { uid } from "uid/secure";
 import isURL from "validator/lib/isURL";
 import { db } from "../lib/firebase";
+import Noired from "./Noired";
 
 const Home = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [hidden, sethidden] = useState(true);
+  const [link, setLink] = useState("");
   const handleURL = async () => {
+    let code = uid(4);
     setLoading(true);
-    await db.collection("urls").add({
-      url: value,
-      code: uid(4),
-    });
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    await db
+      .collection("urls")
+      .add({
+        url: value,
+        code: code,
+      })
+      .finally(() => {
+        setLink(code);
+        setValue("");
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
+      });
   };
 
   return (
@@ -36,7 +46,7 @@ const Home = () => {
         </Title>
         <Text>Cover your URL with our service</Text>
         <TextInput
-          sx={{ width: "80%" }}
+          sx={{ minWidth: "80%", maxWidth: "100%" }}
           size="md"
           radius="md"
           label="Your URL to cover:"
@@ -83,6 +93,8 @@ const Home = () => {
         <Group sx={{ width: "80%" }} position="left" hidden={hidden}>
           <Text color="red">Please input a valid URL</Text>
         </Group>
+        <Space />
+        {link == "" ? "" : <Noired path={window.location.href + link} />}
       </Stack>
     </>
   );
