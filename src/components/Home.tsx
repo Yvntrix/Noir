@@ -61,7 +61,7 @@ const Home = () => {
           }
           onChange={(event) => {
             setValue(event.currentTarget.value);
-            if (event.currentTarget.value == "") {
+            if (event.currentTarget.value === "") {
               sethidden(true);
             } else {
               if (
@@ -94,7 +94,7 @@ const Home = () => {
           <Text color="red">Please input a valid URL</Text>
         </Group>
         <Space />
-        {link == "" ? "" : <Noired path={window.location.href + link} />}
+        {link === "" ? "" : <Noired path={window.location.href + link} />}
       </Stack>
     </>
   );

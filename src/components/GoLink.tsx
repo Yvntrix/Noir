@@ -1,5 +1,5 @@
 import { Center, Loader, Stack } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../lib/firebase";
 
@@ -15,6 +15,7 @@ const GoLink = () => {
       let finalData = data.docs[0].data();
       window.location.replace(finalData.url);
     });
+     // eslint-disable-next-line
   }, []);
   return (
     <>
