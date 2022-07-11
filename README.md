@@ -9,6 +9,12 @@ A simple Link converter to hide your true URL
 
 https://no1r.vercel.app/
 
+## Screenshot
+
+<p align="center">
+  <img src="ss/1.png" width="40%" > <img src="ss/2.png" width="40%">
+</p>
+
 ## Built With
  - React
  - Mantine
